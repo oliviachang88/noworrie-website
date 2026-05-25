@@ -1896,7 +1896,9 @@ function renderWalls(){
 
 // ══ PROFILE ══
 function initProfile(){
-  if(!currentUser)return;
+  if(!currentUser){
+    currentUser={nickname:'小雯',emoji:'🌳',score:380,city:'台北市',skills:[],needs:[]};
+  }
   document.getElementById('profile-name').textContent=currentUser.nickname;
   document.getElementById('profile-city').textContent=currentUser.city+' · 可靠等級';
   document.getElementById('profile-score').textContent=currentUser.score;
@@ -2435,6 +2437,7 @@ function showPage(id){
   if(nl)nl.classList.add('active');
   window.scrollTo(0,0);
   if(id==='profile')initProfile();
+  if(id==='notifications')initNotifications();
   if(id==='messages')initChat();
   if(id==='tasks')initTasks();
   if(id==='post')initPost();
@@ -2834,7 +2837,7 @@ function renderWalls(){
 
 // ══ PROFILE ══
 function initProfile(){
-  if(!currentUser)return;
+  if(!currentUser){currentUser={nickname:'小雯',emoji:'🌳',score:380,city:'台北市',skills:[],needs:[]}; updateNav();}
   document.getElementById('profile-name').textContent=currentUser.nickname;
   document.getElementById('profile-city').textContent=currentUser.city+' · 可靠等級';
   document.getElementById('profile-score').textContent=currentUser.score;
@@ -2997,7 +3000,11 @@ function saveProfile(){
 }
 
 // ══ CHAT ══
+function initNotifications(){
+  if(!currentUser){currentUser={nickname:'小雯',emoji:'🌳',score:380,city:'台北市',skills:[],needs:[]}; updateNav();}
+}
 function initChat(){
+  if(!currentUser){currentUser={nickname:'小雯',emoji:'🌳',score:380,city:'台北市',skills:[],needs:[]}; updateNav();}
   renderChatList();loadChat(0);
   document.getElementById('msg-dot').style.display='';
 }
